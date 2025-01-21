@@ -1,0 +1,598 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.head {
+    justify-content: left;
+    display: flex;
+}
+
+
+.header {
+    background-color: #1a4d80;
+    color: white;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.north-indian-bank {
+    text-align: center;
+    margin-top: 25px;
+    margin-left: 20px;
+}
+
+.auth-buttons button {
+    padding: 8px 16px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #1a4d80;
+    
+}
+
+.corner {
+    position: fixed;
+    right: 0;
+    top: 135px;
+    z-index: 999;
+    flex-direction: column;
+    background-color: #ffffffad;
+    padding: 0;
+    border-radius: 15px;
+    box-shadow: 0 0 2px;
+    display: flex;
+}
+
+.container {
+    max-width: fit-content;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.form-container {
+    background-color: #f5f5f5;
+    padding: 2rem;
+    border-radius: 8px;
+    display: none;
+}
+
+.home-page {
+    text-align: center;
+}
+.side {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hero-section {
+    background-color: #f5f5f5;
+    padding: 3rem 1rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+}
+
+.hero-section h1 {
+    color: #1a4d80;
+    margin-bottom: 1rem;
+}
+
+/* #carouselExample {
+    max-height: 400px;
+    overflow: hidden;
+  }
+
+  .carousel-inner {
+    display: flex;
+    flex-direction: column; 
+  }
+
+  .carousel-item {
+    height: 100%; 
+    transition: transform 0.6s ease-in-out; 
+  }
+
+  .carousel-item-next,
+  .carousel-item-prev {
+    transform: translateY(100%);
+  }
+
+  .carousel-item-next.carousel-item-start,
+  .carousel-item-prev.carousel-item-end {
+    transform: translateY(0);
+  }
+
+  .carousel-item-active.carousel-item-end {
+    transform: translateY(-100%);
+  } */
+
+
+.ad-section {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f0f8ff, #e6f3ff);
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated background effect */
+.ad-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    to {
+        left: 100%;
+    }
+}
+
+.ad-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.ad-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Floating animation for cards */
+.ad-card {
+    animation: float 6s ease-in-out infinite;
+}
+
+.ad-card:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.ad-card:nth-child(3) {
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Pulsing effect for special tags */
+.special-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4444;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Rotating banner */
+.rotating-banner {
+    height: 40px;
+    background: #1a4d80;
+    color: white;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner-content {
+    display: flex;
+    animation: scroll 20s linear infinite;
+}
+
+.banner-item {
+    flex: 0 0 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    white-space: nowrap;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-300%);
+    }
+}
+
+.rotating-banners {
+    height: 40px;
+    background: yellow;
+    color: black;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner-contents {
+    display: flex;
+    animation: scroll 50s linear infinite;
+    transform: translateX(100%); /* Start off-screen to the right */
+}
+
+.banner-items {
+    flex: 0 0 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    white-space: nowrap;
+}
+
+
+
+
+.ad-button {
+    background-color: #1a4d80;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Button hover effect */
+.ad-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.ad-button:hover::before {
+    left: 100%;
+}
+
+.ad-card h3 {
+    color: #1a4d80;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* Underline animation for headings */
+.ad-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #1a4d80;
+    transition: width 0.3s ease;
+}
+
+.ad-card:hover h3::after {
+    width: 100%;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    background-color: #f5f5f5;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.feature-card h3 {
+    color: #1a4d80;
+    margin-bottom: 1rem;
+}
+
+.form-container h2 {
+    margin-bottom: 1rem;
+    color: #1a4d80;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.submit-btn {
+    background-color: #1a4d80;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background-color: #15395f;
+}
+
+.dashboard {
+    display: none;
+}
+
+.account-info {
+    background-color: #f5f5f5;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.transaction-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.transaction-form {
+    flex: 1;
+    background-color: #f5f5f5;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.id-type-selector {
+    margin-bottom: 0.5rem;
+}
+
+.language-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #A0144F;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 90%;
+    width: 600px;
+    color: white;
+}
+
+.welcome-text {
+    margin-bottom: 2rem;
+}
+
+.welcome-text h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.welcome-text h2 {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+}
+
+.language-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.language-btn {
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #FFC107;
+    color: #000;
+    transition: transform 0.2s ease;
+}
+
+.language-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Hide modal after language selection */
+.hidden {
+    display: none;
+}
+
+.chat-bot-icon {
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+    background-color: hsl(210, 66%, 30%);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.chat-bot-icon:hover {
+    background-color: #15395f;
+}
+
+
+.chat-container {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.chat-header {
+    background-color: #1a4d80;
+    color: white;
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-chat {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.message {
+    margin-bottom: 10px;
+    max-width: 80%;
+}
+
+.bot-message {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: auto;
+}
+
+.user-message {
+    background-color: #1a4d80;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: auto;
+}
+
+.chat-input {
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    display: flex;
+}
+
+.chat-input input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.chat-input button {
+    background-color: #1a4d80;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background-color: #15395f;
+}
+
+.bot-typing {
+    padding: 10px;
+    font-style: italic;
+    color: #666;
+    display: none;
+}
+
+marquee {
+    margin-top: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    background-color: #f0f8ff;
+}

@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>North Indian Bank</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+        }
+
+        .header {
+            background-color: #1a4d80;
+            color: white;
+            padding: 1rem;
+        }
+
+        .bank-name {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .auth-container {
+            max-width: 400px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .btn {
+            background-color: #1a4d80;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btnn {
+            background-color: #1a4d80;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100px;
+        }
+
+        .btn:hover {
+            background-color: #153d66;
+        }
+
+        .account-info {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .transaction-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .transaction-form {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .transaction-history {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .transaction-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+
+        .deposit {
+            color: green;
+        }
+
+        .withdraw {
+            color: red;
+        }
+
+        .switch-form {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .switch-form a {
+            color: #1a4d80;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="bank-name">
+            <h1>North Indian Bank</h1>
+            <p>One Family One Bank</p>
+            <small>Since 1906</small>
+        </div>
+    </header>
+
+    <!-- Sign Up Form -->
+    <div id="signUpForm" class="auth-container">
+        <h2 style="text-align: center">Create Account</h2><br>
+        <form onsubmit="handleSignUp(event)">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="signUpName" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="signUpEmail" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="signUpPassword" required>
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+        <div class="switch-form">
+            <p>Already have an account? <a href="#" onclick="toggleForms('signIn')">Sign In</a></p>
+        </div>
+    </div>
+
+    <!-- Sign In Form -->
+    <div id="signInForm" class="auth-container" style="display: none;">
+        <h2>Welcome Back</h2>
+        <form onsubmit="handleSignIn(event)">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="signInEmail" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="signInPassword" required>
+            </div>
+            <button type="submit" class="btn">Sign In</button>
+        </form>
+        <div class="switch-form">
+            <p>Don't have an account? <a href="#" onclick="toggleForms('signUp')">Sign Up</a></p>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="container" style="display: none;">
+        <div class="account-info">
+            <h2>Welcome, <span id="userName"></span></h2>
+            <p>Account Number: <span id="accountNumber">Not Generated</span></p>
+            <p>Balance: ₹<span id="balance">0</span></p>
+            <button onclick="generateAccountNumber()" id="generateAccBtn" class="btn">Create New Account Number</button>
+            <button onclick="handleSignOut()" class="btnn" style="margin-top: 1rem;">Sign Out</button>
+        </div>
+
+        <div class="transaction-container">
+            <div class="transaction-form">
+                <h3>Deposit</h3>
+                <form onsubmit="handleDeposit(event)">
+                    <div class="form-group">
+                        <label>Amount</label>
+                        <input type="number" id="depositAmount" required min="1">
+                    </div>
+                    <button type="submit" class="btn">Deposit</button>
+                </form>
+            </div>
+
+            <div class="transaction-form">
+                <h3>Withdraw</h3>
+                <form onsubmit="handleWithdraw(event)">
+                    <div class="form-group">
+                        <label>Amount</label>
+                        <input type="number" id="withdrawAmount" required min="1">
+                    </div>
+                    <button type="submit" class="btn">Withdraw</button>
+                </form>
+            </div>
+
+            <div class="transaction-form">
+                <h3>Transfer Money</h3>
+                <form onsubmit="handleTransfer(event)">
+                    <div class="form-group">
+                        <label>Recipient Name</label>
+                        <input type="text" id="recipientName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Recipient Account Number</label>
+                        <input type="text" id="recipientAccount" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Amount</label>
+                        <input type="number" id="transferAmount" required min="1">
+                    </div>
+                    <button type="submit" class="btn">Transfer</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="transaction-history">
+            <h3>Transaction History</h3>
+            <div id="transactionList"></div>
+        </div>
+    </div>
+
+    
+   
+    <footer style="background-color: #1a4d80; color: white; padding: 40px 0; margin-top: 50px;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+                <!-- About Section -->
+                <div>
+                    <h3 style="margin-bottom: 20px; color: #fff;">About North Indian Bank</h3>
+                    <p style="color: #ddd; line-height: 1.6;">
+                        Founded in 1906, North Indian Bank is one of India's leading public sector banks, 
+                        offering a wide range of banking products and financial services.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 style="margin-bottom: 20px; color: #fff;">Quick Links</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;">
+                            <a href="#" style="color: #ddd; text-decoration: none; transition: color 0.3s;">Internet Banking</a>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <a href="#" style="color: #ddd; text-decoration: none; transition: color 0.3s;">Mobile Banking</a>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <a href="#" style="color: #ddd; text-decoration: none; transition: color 0.3s;">Locate Branch/ATM</a>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <a href="#" style="color: #ddd; text-decoration: none; transition: color 0.3s;">Calculate EMI</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Products & Services -->
+                <div>
+                    <h3 style="margin-bottom: 20px; color: #fff;">Products & Services</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;">
+                            <a href="#" style="color: #ddd; text-decoration: none; transition: color 0.3s;">Savings Account</a>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <a href="#" style="color: #ddd; text-decoration: none; transition: color 0.3s;">Fixed Deposits</a>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <a href="#" style="color: #ddd; text-decoration: none; transition: color 0.3s;">Home Loans</a>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <a href="#" style="color: #ddd; text-decoration: none; transition: color 0.3s;">Insurance</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact Information -->
+                <div>
+                    <h3 style="margin-bottom: 20px; color: #fff;">Contact Us</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px; color: #ddd;">
+                            <strong>24x7 Helpline:</strong><br>
+                            1800-190-1906
+                        </li>
+                        <li style="margin-bottom: 10px; color: #ddd;">
+                            <strong>Email:</strong><br>
+                            care@northindianbank.com
+                        </li>
+                        <li style="margin-bottom: 10px; color: #ddd;">
+                            <strong>Head Office:</strong><br>
+                            112, J C Road<br>
+                            Bangalore - 560002
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Social Media Links -->
+            <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <div style="margin-bottom: 20px;">
+                    <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">
+                        <span style="font-size: 24px;">📱</span>
+                    </a>
+                    <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">
+                        <span style="font-size: 24px;">📘</span>
+                    </a>
+                    <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">
+                        <span style="font-size: 24px;">🐦</span>
+                    </a>
+                    <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">
+                        <span style="font-size: 24px;">📸</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div style="text-align: center; margin-top: 20px; color: #ddd; font-size: 0.9em;">
+                <p>© 2025 North Indian Bank. All rights reserved.</p>
+                <p style="margin-top: 10px;">
+                    <a href="#" style="color: #ddd; text-decoration: none; margin: 0 10px;">Privacy Policy</a> |
+                    <a href="#" style="color: #ddd; text-decoration: none; margin: 0 10px;">Terms of Service</a> |
+                    <a href="#" style="color: #ddd; text-decoration: none; margin: 0 10px;">Security Information</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script>
+        // Initialize data from localStorage or set defaults
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        let currentUser = null;
+
+        // Save data to localStorage
+        function saveData() {
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+
+        function toggleForms(form) {
+            document.getElementById('signUpForm').style.display = form === 'signUp' ? 'block' : 'none';
+            document.getElementById('signInForm').style.display = form === 'signIn' ? 'block' : 'none';
+            document.getElementById('dashboard').style.display = 'none';
+        }
+
+        function handleSignUp(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('signUpName').value;
+            const email = document.getElementById('signUpEmail').value;
+            const password = document.getElementById('signUpPassword').value;
+
+            if (users.some(u => u.email === email)) {
+                alert('Email already registered! Please sign in.');
+                toggleForms('signIn');
+                return;
+            }
+
+            const user = {
+                name,
+                email,
+                password,
+                accountNumber: null,
+                balance: 0,
+                transactions: []
+            };
+
+            users.push(user);
+            saveData();
+            alert('Sign up successful! Please sign in.');
+            
+            // Clear form
+            event.target.reset();
+            toggleForms('signIn');
+        }
+
+        function handleSignIn(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('signInEmail').value;
+            const password = document.getElementById('signInPassword').value;
+
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                currentUser = user;
+                document.getElementById('userName').textContent = user.name;
+                document.getElementById('accountNumber').textContent = user.accountNumber || 'Not Generated';
+                document.getElementById('balance').textContent = user.balance;
+                document.getElementById('generateAccBtn').style.display = user.accountNumber ? 'none' : 'block';
+                updateTransactionHistory();
+                
+                // Clear form and show dashboard
+                event.target.reset();
+                document.getElementById('signInForm').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+            } else {
+                alert('Invalid credentials!');
+            }
+        }
+
+        function handleSignOut() {
+            currentUser = null;
+            toggleForms('signIn');
+        }
+
+        function generateAccountNumber() {
+            const random = Math.floor(Math.random() * 9000000000) + 1000000000;
+            const accountNumber = random;
+            
+            if (users.some(u => u.accountNumber === accountNumber)) {
+                generateAccountNumber();
+                return;
+            }
+
+            currentUser.accountNumber = accountNumber;
+            document.getElementById('accountNumber').textContent = accountNumber;
+            document.getElementById('generateAccBtn').style.display = 'none';
+            saveData();
+            alert('Account number generated successfully!');
+        }
+
+        function handleDeposit(event) {
+            event.preventDefault();
+            
+            if (!currentUser.accountNumber) {
+                alert('Please generate an account number first!');
+                return;
+            }
+
+            const amount = Number(document.getElementById('depositAmount').value);
+            currentUser.balance += amount;
+            
+            // Add transaction record
+            currentUser.transactions.push({
+                type: 'deposit',
+                amount: amount,
+                date: new Date().toLocaleString(),
+                balance: currentUser.balance
+            });
+
+            document.getElementById('balance').textContent = currentUser.balance;
+            document.getElementById('depositAmount').value = '';
+            updateTransactionHistory();
+            saveData();
+            alert(`Successfully deposited ₹${amount}`);
+        }
+
+        function handleWithdraw(event) {
+            event.preventDefault();
+            
+            if (!currentUser.accountNumber) {
+                alert('Please generate an account number first!');
+                return;
+            }
+
+            const amount = Number(document.getElementById('withdrawAmount').value);
+            
+            if (amount > currentUser.balance) {
+                alert('Insufficient balance!');
+                return;
+            }
+
+            currentUser.balance -= amount;
+            
+            // Add transaction record
+            currentUser.transactions.push({
+                type: 'withdraw',
+                amount: amount,
+                date: new Date().toLocaleString(),
+                balance: currentUser.balance
+            });
+
+            document.getElementById('balance').textContent = currentUser.balance;
+            document.getElementById('withdrawAmount').value = '';
+            updateTransactionHistory();
+            saveData();
+            alert(`Successfully withdrawn ₹${amount}`);
+        }
+
+        function updateTransactionHistory() {
+            const transactionList = document.getElementById('transactionList');
+            transactionList.innerHTML = '';
+            
+            if (!currentUser.transactions) {
+                currentUser.transactions = [];
+            }
+
+            currentUser.transactions.slice().reverse().forEach(transaction => {
+                const div = document.createElement('div');
+                div.className = 'transaction-item';
+                div.innerHTML = `
+                    <span>${transaction.date}</span>
+                    <span class="${transaction.type}">
+                        ${transaction.type === 'deposit' ? '+' : '-'}₹${transaction.amount}
+                    </span>
+                    <span>Balance: ₹${transaction.balance}</span>
+                `;
+                transactionList.appendChild(div);
+            });
+        }
+
+        function handleTransfer(event) {
+            event.preventDefault();
+            
+            if (!currentUser.accountNumber) {
+                alert('Please generate an account number first!');
+                return;
+            }
+        
+            const recipientName = document.getElementById('recipientName').value;
+            const recipientAccount = document.getElementById('recipientAccount').value;
+            const amount = Number(document.getElementById('transferAmount').value);
+            
+            // Check if user has sufficient balance
+            if (amount > currentUser.balance) {
+                alert('Insufficient balance!');
+                return;
+            }
+        
+            // Find recipient in users array
+            const recipient = users.find(u => u.accountNumber === recipientAccount && u.name === recipientName);
+            
+            if (!recipient) {
+                alert('Recipient not found! Please check the name and account number.');
+                return;
+            }
+        
+            // Perform transfer
+            currentUser.balance -= amount;
+            recipient.balance += amount;
+        
+            // Add transaction record for sender
+            currentUser.transactions.push({
+                type: 'transfer_sent',
+                amount: amount,
+                date: new Date().toLocaleString(),
+                balance: currentUser.balance,
+                recipientName: recipient.name,
+                recipientAccount: recipient.accountNumber
+            });
+        
+            // Add transaction record for recipient
+            recipient.transactions.push({
+                type: 'transfer_received',
+                amount: amount,
+                date: new Date().toLocaleString(),
+                balance: recipient.balance,
+                senderName: currentUser.name,
+                senderAccount: currentUser.accountNumber
+            });
+        
+            // Update UI and save data
+            document.getElementById('balance').textContent = currentUser.balance;
+            document.getElementById('transferAmount').value = '';
+            document.getElementById('recipientName').value = '';
+            document.getElementById('recipientAccount').value = '';
+            updateTransactionHistory();
+            saveData();
+            alert(`Successfully transferred ₹${amount} to ${recipient.name}`);
+        }
+        
+        function updateTransactionHistory() {
+            const transactionList = document.getElementById('transactionList');
+            transactionList.innerHTML = '';
+            
+            if (!currentUser.transactions) {
+                currentUser.transactions = [];
+            }
+        
+            currentUser.transactions.slice().reverse().forEach(transaction => {
+                const div = document.createElement('div');
+                div.className = 'transaction-item';
+                
+                let transactionText = '';
+                if (transaction.type === 'deposit' || transaction.type === 'withdraw') {
+                    transactionText = `
+                        <span>${transaction.date}</span>
+                        <span class="${transaction.type}">
+                            ${transaction.type === 'deposit' ? '+' : '-'}₹${transaction.amount}
+                        </span>
+                        <span>Balance: ₹${transaction.balance}</span>
+                    `;
+                } else if (transaction.type === 'transfer_sent') {
+                    transactionText = `
+                        <span>${transaction.date}</span>
+                        <span class="withdraw">-₹${transaction.amount} (Sent to ${transaction.recipientName})</span>
+                        <span>Balance: ₹${transaction.balance}</span>
+                    `;
+                } else if (transaction.type === 'transfer_received') {
+                    transactionText = `
+                        <span>${transaction.date}</span>
+                        <span class="deposit">+₹${transaction.amount} (Received from ${transaction.senderName})</span>
+                        <span>Balance: ₹${transaction.balance}</span>
+                    `;
+                }
+                
+                div.innerHTML = transactionText;
+                transactionList.appendChild(div);
+            });
+        }
+
+    </script>
+</body>
+</html>

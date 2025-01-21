@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="loancalc.css">
+</head>
+<body>
+
+    <div class="header">
+        <div class="head">
+        <div class="logo" onclick="showHome()"><img src="C:\Users\sanju\Desktop\bank website/assets/bank_logo.png" alt="north indian bank"></div>
+        <div class="north-indian-bank">
+            <h1>North Indian Bank</h1>
+            <h5>One Family One Bank</h5>
+            <h6 style="padding: 5px;">Since 1906</h6>
+        </div>
+        </div>
+        
+        <!-- <div class="auth-buttons">
+            <button><a href="signin.html" style="text-decoration: none;">Sign In</a></button>
+        </div>
+        
+        <div>
+            <a href="loancalc.html" style="text-decoration: none; color: white;">loan calculator</a>
+        </div> -->
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="2" y1="7" x2="22" y2="7"></line>
+                </svg>
+                Loan Calculators
+            </div>
+        </div>
+        <div class="tabs">
+            <div class="tab-list">
+                <button class="tab-button active" data-tab="emi">EMI Calculator</button>
+                <button class="tab-button" data-tab="personal">Personal Loan</button>
+                <button class="tab-button" data-tab="home">Home Loan</button>
+                <button class="tab-button" data-tab="car">Car Loan</button>
+            </div>
+
+            <!-- EMI Calculator -->
+            <div class="tab-content active" id="emi">
+                <form id="emiForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Loan Amount (₹)</label>
+                            <input type="number" name="amount" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Interest Rate (%)</label>
+                            <input type="number" name="rate" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Loan Tenure (Years)</label>
+                            <input type="number" name="tenure" required>
+                        </div>
+                    </div>
+                    <button type="submit">Calculate EMI</button>
+                </form>
+                <div class="results" id="emiResults">
+                    <h3>Results:</h3>
+                    <p>Monthly EMI: ₹<span id="emiAmount"></span></p>
+                    <p>Total Payment: ₹<span id="totalPayment"></span></p>
+                    <p>Total Interest: ₹<span id="totalInterest"></span></p>
+                </div>
+            </div>
+
+            <!-- Personal Loan Calculator -->
+            <div class="tab-content" id="personal">
+                <form id="personalForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Monthly Salary (₹)</label>
+                            <input type="number" name="salary" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Existing EMI (₹)</label>
+                            <input type="number" name="existingEmi">
+                        </div>
+                    </div>
+                    <button type="submit">Check Eligibility</button>
+                </form>
+                <div class="results" id="personalResults">
+                    <h3>Loan Eligibility:</h3>
+                    <p>Maximum Eligible Amount: ₹<span id="maxEligible"></span></p>
+                    <p>Monthly EMI Limit: ₹<span id="emiLimit"></span></p>
+                </div>
+            </div>
+
+            <!-- Home Loan Calculator -->
+            <div class="tab-content" id="home">
+                <form id="homeForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Property Value (₹)</label>
+                            <input type="number" name="propertyValue" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Down Payment (₹)</label>
+                            <input type="number" name="downPayment" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Interest Rate (%)</label>
+                            <input type="number" name="rate" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Loan Tenure (Years)</label>
+                            <input type="number" name="tenure" required>
+                        </div>
+                    </div>
+                    <button type="submit">Calculate Home Loan</button>
+                </form>
+                <div class="results" id="homeResults">
+                    <h3>Results:</h3>
+                    <p>Loan Amount: ₹<span id="homeLoanAmount"></span></p>
+                    <p>Monthly EMI: ₹<span id="homeEmi"></span></p>
+                    <p>Total Payment: ₹<span id="homeTotalPayment"></span></p>
+                </div>
+            </div>
+
+            <!-- Car Loan Calculator -->
+            <div class="tab-content" id="car">
+                <form id="carForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Car Value (₹)</label>
+                            <input type="number" name="carValue" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Down Payment (₹)</label>
+                            <input type="number" name="downPayment" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Interest Rate (%)</label>
+                            <input type="number" name="rate" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Loan Tenure (Years)</label>
+                            <input type="number" name="tenure" required>
+                        </div>
+                    </div>
+                    <button type="submit">Calculate Car Loan</button>
+                </form>
+                <div class="results" id="carResults">
+                    <h3>Results:</h3>
+                    <p>Loan Amount: ₹<span id="carLoanAmount"></span></p>
+                    <p>Monthly EMI: ₹<span id="carEmi"></span></p>
+                    <p>Total Payment: ₹<span id="carTotalPayment"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="loancalc.js"></script>
+</body>
+</html>

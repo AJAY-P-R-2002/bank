@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="5"> -->
+    <title>North Indian Bank</title>
+    <link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+
+    <!-- <div id="languageModal" class="language-modal">
+        <div class="modal-content">
+            <div class="welcome-text">
+                <h1>पंजाब नैशनल बैंक में आपका स्वागत है</h1>
+                <h1>WELCOME TO NORTH INDIAN BANK</h1>
+                <h2>वेबसाइट में प्रवेश करने के लिए अपनी पसंदीदा भाषा का चयन करें</h2>
+                <h2>Select your Preferred Language to Access the Website</h2>
+            </div>
+            <div class="language-buttons">
+                <button class="language-btn" onclick="setLanguage('hi')">Hindi</button>
+                <button class="language-btn" onclick="setLanguage('en')">English</button>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="header">
+        <div class="head">
+        <div class="logo" onclick="showHome()"><img src="C:\Users\sanju\Desktop\bank website/assets/bank_logo.png" alt="north indian bank"></div>
+        <div class="north-indian-bank">
+            <h1>North Indian Bank</h1>
+            <h5>One Family One Bank</h5>
+            <h6 style="padding: 5px;">Since 1906</h6>
+        </div>
+        </div>
+        <div class="side">
+        <div class="auth-buttons">
+            <a href="dashboard.html" style="text-decoration: none;"><button>Sign In</button></a>
+        </div>
+        
+        <div>
+            <a href="loancalc.html" style="text-decoration: none; color: white;">loan calculator</a>
+        </div>
+        </div>
+    </div>
+
+    <marquee width="100%" behavior="scroll" direction="left" scrollamount="6">
+        North Indian Bank is your trusted partner for innovative, secure, and customer-focused banking solutions.
+    </marquee>
+
+    <div class="corner">
+        <a href="https://www.facebook.com/" target="_blank"><img src="C:\Users\sanju\Desktop\bank website/assets/fb.png" alt="Facebook"></a>
+        <a href="https://www.instagram.com/" target="_blank"><img src="C:\Users\sanju\Desktop\bank website/assets/instagram.png" alt="Instagram"></a>
+        <a href="https://www.twitter.com/" target="_blank"><img src="C:\Users\sanju\Desktop\bank website/assets/twitter.png" alt="Twitter"></a>
+        <a href="https://www.linkedin.com/" target="_blank"><img src="C:\Users\sanju\Desktop\bank website/assets/linkedin.png" alt="Linkedin"></a>
+        <a href="https://www.youtube.com/" target="_blank"><img src="C:\Users\sanju\Desktop\bank website/assets/youtube.png" alt="youtube"></a>
+    </div>
+
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="home-page">
+            <div class="hero-section">
+                <h1>Welcome to North Indian Bank</h1>
+                <p>Your Trusted Banking Partner Since 1906</p>
+            </div>
+            <div class="ad-section">
+                <div class="rotating-banner">
+                    <div class="banner-content">
+                        <div class="banner-item">🔥 Special offer: Get 10% cashback on your first transaction!</div>
+                        <div class="banner-item">💳 Zero processing fee on new credit cards - Limited time offer!</div>
+                        <div class="banner-item">🏦 Fixed deposit rates increased to 7.5% - Invest now!</div>
+                    </div>
+                </div>
+
+                <h2>Special Offers</h2>
+                <div class="ad-container">
+                    <div class="ad-card">
+                        <span class="special-tag">Limited Time</span>
+                        <h3>Personal Loan</h3>
+                        <p>Get instant personal loans at 8.9% interest rate</p>
+                        <p>No collateral required | Quick approval</p>
+                        <button class="ad-button" onclick="alert('Redirecting to Personal Loan page...')">Apply Now</button>
+                    </div>
+                    <div class="ad-card">
+                        <span class="special-tag">Hot Deal</span>
+                        <h3>Credit Card</h3>
+                        <p>Premium credit cards with 5% cashback</p>
+                        <p>Zero annual fee for first year</p>
+                        <button class="ad-button" onclick="alert('Redirecting to Credit Card page...')">Learn More</button>
+                    </div>
+                    <div class="ad-card">
+                        <span class="special-tag">New</span>
+                        <h3>Fixed Deposit</h3>
+                        <p>Earn up to 7.5% interest on fixed deposits</p>
+                        <p>Special rates for senior citizens</p>
+                        <button class="ad-button" onclick="alert('Redirecting to Fixed Deposit page...')">Invest Now</button>
+                    </div>
+                    <div class="ad-card">
+                        <span class="special-tag">Hot Deal</span>
+                        <h3>Debit Card</h3>
+                        <p>Get up to 12% off on flight and hotel bookings</p>
+                        <p>Special rates for couples</p>
+                        <button class="ad-button" onclick="alert('Redirecting to Credit Card page...')">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Online Banking</h3>
+                    <p>Access your account 24/7 with our secure online banking platform</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Easy Transfers</h3>
+                    <p>Send and receive money instantly with our digital transfer services</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Secure Banking</h3>
+                    <p>Bank with confidence knowing your money is protected</p>
+                </div>
+                <div class="feature-card">
+                    <h3>SMS Alert</h3>
+                    <p>Avail customers to register for SMS alert</p>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Add Footer Section before closing body tag -->
+    <footer style="background-color: #1a4d80; color: white; padding: 40px 0; margin-top: 50px;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+                <!-- About Section -->
+                <div>
+                    <h3 style="margin-bottom: 20px; color: #fff;">About North Indian Bank</h3>
+                    <p style="color: #ddd; line-height: 1.6;">
+                        Founded in 1906, North Indian Bank is one of India's leading public sector banks, 
+                        offering a wide range of banking products and financial services.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 style="margin-bottom: 20px; color: #fff;">Quick Links</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;">
+                            <a href="#" style="color: #ddd; text-decoration: none; transition: color 0.3s;">Internet Banking</a>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <a href="#" style="color: #ddd; text-decoration: none; transition: color 0.3s;">Mobile Banking</a>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <a href="#" style="color: #ddd; text-decoration: none; transition: color 0.3s;">Locate Branch/ATM</a>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <a href="#" style="color: #ddd; text-decoration: none; transition: color 0.3s;">Calculate EMI</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Products & Services -->
+                <div>
+                    <h3 style="margin-bottom: 20px; color: #fff;">Products & Services</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;">
+                            <a href="#" style="color: #ddd; text-decoration: none; transition: color 0.3s;">Savings Account</a>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <a href="#" style="color: #ddd; text-decoration: none; transition: color 0.3s;">Fixed Deposits</a>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <a href="#" style="color: #ddd; text-decoration: none; transition: color 0.3s;">Home Loans</a>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <a href="#" style="color: #ddd; text-decoration: none; transition: color 0.3s;">Insurance</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact Information -->
+                <div>
+                    <h3 style="margin-bottom: 20px; color: #fff;">Contact Us</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px; color: #ddd;">
+                            <strong>24x7 Helpline:</strong><br>
+                            1800-190-1906
+                        </li>
+                        <li style="margin-bottom: 10px; color: #ddd;">
+                            <strong>Email:</strong><br>
+                            care@northindianbank.com
+                        </li>
+                        <li style="margin-bottom: 10px; color: #ddd;">
+                            <strong>Head Office:</strong><br>
+                            112, J C Road<br>
+                            Bangalore - 560002
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Social Media Links -->
+            <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <div style="margin-bottom: 20px;">
+                    <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">
+                        <span style="font-size: 24px;">📱</span>
+                    </a>
+                    <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">
+                        <span style="font-size: 24px;">📘</span>
+                    </a>
+                    <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">
+                        <span style="font-size: 24px;">🐦</span>
+                    </a>
+                    <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">
+                        <span style="font-size: 24px;">📸</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div style="text-align: center; margin-top: 20px; color: #ddd; font-size: 0.9em;">
+                <p>© 2025 North Indian Bank. All rights reserved.</p>
+                <p style="margin-top: 10px;">
+                    <a href="#" style="color: #ddd; text-decoration: none; margin: 0 10px;">Privacy Policy</a> |
+                    <a href="#" style="color: #ddd; text-decoration: none; margin: 0 10px;">Terms of Service</a> |
+                    <a href="#" style="color: #ddd; text-decoration: none; margin: 0 10px;">Security Information</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+<!-- Previous closing tags remain the same -->
+
+<!--chat bot-->
+
+    <div class="chat-bot-icon" onclick="toggleChat()">
+        <img src="C:\Users\sanju\Desktop\bank website/assets/chatbot.png" alt="chatbot">
+    </div>
+
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div>Canara Bank AI Assistant</div>
+            <div class="close-chat" onclick="toggleChat()">×</div>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                Hello! I'm your North Indian Bank AI assistant. How can I help you today?
+            </div>
+        </div>
+        <div class="bot-typing" id="botTyping">Bot is typing...</div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+<!--chat bot-->
+
+
+    <script src="index.js"></script>
+</body>
+</html>
